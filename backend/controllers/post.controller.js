@@ -1,5 +1,5 @@
+import cloudinary from "../lib/cloudinary.js";
 import Post from "../models/post.model.js";
-import cloudinary from "../config/cloudinary.js";
 import Notification from "../models/notification.model.js";
 import { sendCommentNotificationEmail } from "../emails/emailHandlers.js";
 

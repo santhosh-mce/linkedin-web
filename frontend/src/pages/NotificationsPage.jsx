@@ -87,7 +87,7 @@ const NotificationsPage = () => {
 				{relatedPost.image && (
 					<img src={relatedPost.image} alt='Post preview' className='w-10 h-10 object-cover rounded' />
 				)}
-				<div className='flex-1 md:overflow-hidden md:max-w-xl max-w-xs sm:block hidden	'>
+				<div className='flex-1 overflow-hidden'>
 					<p className='text-sm text-gray-600 truncate'>{relatedPost.content}</p>
 				</div>
 				<ExternalLink size={14} className='text-gray-400' />
@@ -111,27 +111,28 @@ const NotificationsPage = () => {
 							{notifications.data.map((notification) => (
 								<li
 									key={notification._id}
-									className={`bg-white border rounded-lg p-4 my-4 transition-all hover:shadow-md ${!notification.read ? "border-blue-500" : "border-gray-200"
-										}`}
+									className={`bg-white border rounded-lg p-4 my-4 transition-all hover:shadow-md ${
+										!notification.read ? "border-blue-500" : "border-gray-200"
+									}`}
 								>
 									<div className='flex items-start justify-between'>
-										<div className='flex items-center space-x-4 max-w-md'>
+										<div className='flex items-center space-x-4'>
 											<Link to={`/profile/${notification.relatedUser.username}`}>
 												<img
 													src={notification.relatedUser.profilePicture || "/avatar.png"}
 													alt={notification.relatedUser.name}
-													className='sm:w-12 sm:h-12 w-8 h-8 rounded-full object-cover  '
+													className='w-12 h-12 rounded-full object-cover'
 												/>
 											</Link>
 
 											<div>
-												<div className='flex items-center gap-2 '>
+												<div className='flex items-center gap-2'>
 													<div className='p-1 bg-gray-100 rounded-full'>
 														{renderNotificationIcon(notification.type)}
 													</div>
-													<p className='text-sm '>{renderNotificationContent(notification)}</p>
+													<p className='text-sm'>{renderNotificationContent(notification)}</p>
 												</div>
-												<p className='text-xs text-gray-500 mt-1 '>
+												<p className='text-xs text-gray-500 mt-1'>
 													{formatDistanceToNow(new Date(notification.createdAt), {
 														addSuffix: true,
 													})}
