@@ -31,11 +31,15 @@ app.use("/api/v1/posts", postRoutes);
 app.use("/api/v1/notifications", notificationRoutes);
 app.use("/api/v1/connections", connectionRoutes);
 
-app.use(express.static(path.join(__dirname, "/frontend/dist")));
+// app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+// });
+
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+})
 
 app.listen(3000, () => {
   console.log(`Server running on http://localhost:3000`);
