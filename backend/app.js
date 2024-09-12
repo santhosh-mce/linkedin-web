@@ -15,7 +15,6 @@ import { connectDB } from "./lib/db.js";
 dotenv.config();
 
 const app = express();
-const PORT = 3000;
 const __dirname = path.resolve();
 
 app.use(cors());
@@ -35,7 +34,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(3000, () => {
+  console.log(`Server running on http://localhost:3000`);
   connectDB();
 });
